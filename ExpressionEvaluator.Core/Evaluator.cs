@@ -116,7 +116,7 @@ public class Evaluator
                     "+" => a + b,
                     "-" => a - b,
                     "*" => a * b,
-                    "/" => a / b,
+                    "/" => b == 0 ? throw new DivideByZeroException() : a / b,
                     "^" => Math.Pow(a, b),
                     _ => throw new Exception("Sintax error.")
                 });

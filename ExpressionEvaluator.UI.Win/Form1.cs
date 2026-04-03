@@ -101,8 +101,19 @@ namespace ExpressionEvaluator.UI.Win
 
         private void btnResult_Click(object sender, EventArgs e)
         {
-            var resultado = Evaluator.Evaluate(txtDisplay.Text);
-            txtDisplay.Text += "=" + resultado.ToString(CultureInfo.InvariantCulture);
+           
+            if (string.IsNullOrEmpty(txtDisplay.Text) || txtDisplay.Text.Contains("="))
+                return;
+
+            try
+            {
+                var resultado = Evaluator.Evaluate(txtDisplay.Text);
+                txtDisplay.Text += "=" + resultado.ToString(CultureInfo.InvariantCulture);
+            }
+            catch (Exception)
+            {
+                txtDisplay.Text = "Error";
+            }
         }
 
         private void btnPow_Click(object sender, EventArgs e)
