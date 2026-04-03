@@ -1,5 +1,5 @@
 using ExpressionEvaluator.Core;
-
+using System.Globalization;
 namespace ExpressionEvaluator.UI.Win
 {
     public partial class Form1 : Form
@@ -101,7 +101,8 @@ namespace ExpressionEvaluator.UI.Win
 
         private void btnResult_Click(object sender, EventArgs e)
         {
-            txtDisplay.Text += $"={Evaluator.Evaluate(txtDisplay.Text)}";
+            var resultado = Evaluator.Evaluate(txtDisplay.Text);
+            txtDisplay.Text += "=" + resultado.ToString(CultureInfo.InvariantCulture);
         }
 
         private void btnPow_Click(object sender, EventArgs e)
